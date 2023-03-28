@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Products.Domain.Model.Person;
+using Products.Domain.Model.Product;
+using Products.Domain.Model.ProductType;
+using Products.Domain.Model.Tenant;
 
-namespace Products.Infrastructure;
+namespace Products.Infrastructure.Context;
 
 public partial class NightDbContext : DbContext
 {
@@ -21,6 +25,8 @@ public partial class NightDbContext : DbContext
 
     public virtual DbSet<ProductType> ProductTypes { get; set; }
 
+    public virtual DbSet<Tenant> Tenants { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NightDB");
@@ -36,7 +42,6 @@ public partial class NightDbContext : DbContext
             entity.Property(e => e.DateCreated).HasColumnType("datetime");
             entity.Property(e => e.Email).HasMaxLength(24);
             entity.Property(e => e.LastName).HasMaxLength(24);
-            entity.Property(e => e.ModifiedBy).HasColumnType("datetime");
             entity.Property(e => e.Name).HasMaxLength(24);
         });
 
@@ -48,7 +53,6 @@ public partial class NightDbContext : DbContext
 
             entity.Property(e => e.DateCreated).HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(120);
-            entity.Property(e => e.ModifiedBy).HasColumnType("datetime");
             entity.Property(e => e.Name).HasMaxLength(60);
             entity.Property(e => e.Price).HasColumnType("decimal(5, 2)");
         });
@@ -61,8 +65,18 @@ public partial class NightDbContext : DbContext
 
             entity.Property(e => e.DateCreated).HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(120);
-            entity.Property(e => e.ModifiedBy).HasColumnType("datetime");
             entity.Property(e => e.Name).HasMaxLength(60);
+        });
+
+        modelBuilder.Entity<Tenant>(entity =>
+        {
+            entity.HasKey(e => e.TenantId).HasName("PK_TenantId");
+
+            entity.ToTable("Tenant");
+
+            entity.Property(e => e.TenantId).ValueGeneratedNever();
+            entity.Property(e => e.DateCreated).HasColumnType("datetime");
+            entity.Property(e => e.Name).HasMaxLength(30);
         });
 
         OnModelCreatingPartial(modelBuilder);

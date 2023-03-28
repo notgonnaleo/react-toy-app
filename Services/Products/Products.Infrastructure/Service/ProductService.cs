@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Microsoft.Extensions.Logging;
 using Products.Domain.IService;
+using Products.Infrastructure.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace Products.Infrastructure.Service
             T response = null;
             try
             {
-                _context.Set<T>().Where(predicate).FirstOrDefault();
+                response = _context.Set<T>().Where(predicate).FirstOrDefault();
             }
             catch (Exception ex)
             {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Products.Infrastructure;
+namespace Products.Domain.Model.Product;
 
 public partial class Product
 {
@@ -17,7 +17,7 @@ public partial class Product
 
     public int? ProductTypeId { get; set; }
 
-    public DateTime? ModifiedBy { get; set; }
+    public int? ModifiedBy { get; set; }
 
     public DateTime? DateCreated { get; set; }
 
