@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import React from 'react';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { ProductsAPI } from '../../env';
 import { ProductsType } from '../../types/productsType';
 

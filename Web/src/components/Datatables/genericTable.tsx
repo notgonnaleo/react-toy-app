@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { TableProps } from '../../types/tableType';
 
 function Table<T>({ data, columns }: TableProps<T>) {

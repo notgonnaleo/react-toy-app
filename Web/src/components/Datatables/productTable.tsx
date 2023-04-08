@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getProducts } from '../../services/Products/productsService';
 import { ProductsType } from '../../types/productsType';
 import Table from './genericTable';
