@@ -1,5 +1,5 @@
 export type ProductsType = {
-    tenantId: number;
+    TenantId: number;
     productId: number;
     name: string;
     description: string;
