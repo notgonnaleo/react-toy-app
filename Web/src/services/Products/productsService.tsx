@@ -26,7 +26,10 @@ export async function getProduct(tenantId: number, productId: number): Promise<P
 
 export async function saveProduct(product: ProductsType): Promise<ProductsType[]> {
     try {
-        const response = await axios.post(`${ProductsAPI}/CreateProduct`, { product });
+        const response = await axios.post(`${ProductsAPI}/CreateProduct`, product,
+            {
+                headers: { 'Content-Type': 'application/json' }
+            });
         return response.data;
     } catch (err) {
         console.log(err);

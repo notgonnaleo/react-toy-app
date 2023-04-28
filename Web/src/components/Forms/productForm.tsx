@@ -4,8 +4,8 @@ import { saveProduct } from '../../services/Products/productsService';
 import GenericForm from '../Forms/genericForm';
 
 const ProductForm = () => {
-    const [formData, setFormData] = useState<ProductsType>({
-        TenantId: 0,
+    const [formData] = useState<ProductsType>({
+        tenantId: 0,
         productId: 0,
         name: '',
         description: '',
@@ -13,7 +13,7 @@ const ProductForm = () => {
         productTypeId: 0,
         modifiedBy: 0,
         dateCreated: new Date(),
-        active: 0,
+        active: true,
     });
 
     const handleSubmit = async (data: ProductsType) => {
@@ -26,7 +26,7 @@ const ProductForm = () => {
     };
 
     const fields = [
-        { name: 'TenantId', label: 'Tenant ID', type: 'number' },
+        { name: 'tenantId', label: 'Tenant ID', type: 'number' },
         { name: 'productId', label: 'Product ID', type: 'number' },
         { name: 'productTypeId', label: 'Product Type ID', type: 'number' },
         { name: 'name', label: 'Name', type: 'text' },

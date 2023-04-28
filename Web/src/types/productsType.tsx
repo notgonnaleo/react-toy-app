@@ -1,5 +1,5 @@
 export type ProductsType = {
-    TenantId: number;
+    tenantId: number;
     productId: number;
     name: string;
     description: string;
@@ -7,5 +7,5 @@ export type ProductsType = {
     productTypeId: number;
     modifiedBy: number;
     dateCreated: Date;
-    active: number;
+    active: boolean;
 };
