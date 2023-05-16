@@ -22,7 +22,7 @@ namespace Products.Facade.Controllers
         {
             try
             {
-                var response = _productService.GetAll<Product>(x => true).Result;
+                var response = _productService.GetAll().Result;
                 return Ok(response);
             }
             catch (Exception ex)
@@ -37,7 +37,7 @@ namespace Products.Facade.Controllers
         {
             try
             {
-                var response = _productService.Get<Product>(x => x.TenantId == TenantId && x.ProductId == ProductId).Result;
+                var response = _productService.Get(TenantId, ProductId).Result;
                 return Ok(response);
             }
             catch (Exception ex)
@@ -48,12 +48,12 @@ namespace Products.Facade.Controllers
 
         [HttpPost]
         [Route("CreateProduct")]
-        public IActionResult CreateProduct(Product model)
+        public async Task<IActionResult> CreateProduct(Product product)
         {
             try
             {
-                var response = _productService.Add(model);
-                return Ok(response.Result);
+                var response = await _productService.Create(product);
+                return Ok(response);
             }
             catch (Exception ex)
             {
@@ -63,12 +63,12 @@ namespace Products.Facade.Controllers
 
         [HttpPut]
         [Route("UpdateProduct")]
-        public IActionResult UpdateProduct(Product model)
+        public async Task<IActionResult> UpdateProduct(Product product)
         {
             try
             {
-                var response = _productService.Update(model);
-                return Ok(response.Result);
+                var response = await _productService.Update(product);
+                return Ok(response);
             }
             catch (Exception ex)
             {
@@ -77,13 +77,13 @@ namespace Products.Facade.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteProduct")]
-        public IActionResult DeleteProduct(Product model)
+        [Route("CreateProduct")]
+        public async Task<IActionResult> DeleteProduct(int TenantId, int ProductId)
         {
             try
             {
-                var response = _productService.Delete(model);
-                return Ok(response.Result);
+                var response = await _productService.Delete(TenantId, ProductId);
+                return Ok(response);
             }
             catch (Exception ex)
             {

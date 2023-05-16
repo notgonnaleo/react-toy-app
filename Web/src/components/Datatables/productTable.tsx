@@ -3,7 +3,7 @@ import { getProducts } from '../../services/Products/productsService';
 import { ProductsType } from '../../types/productsType';
 import Table from './genericTable';
 
-function ProductTable() {
+const ProductTable = () => {
     const [products, setProducts] = useState<ProductsType[]>([]);
 
     useEffect(() => {

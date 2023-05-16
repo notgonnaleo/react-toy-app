@@ -8,23 +8,23 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\L E O\\.nuget\\packages\\": {},
-    "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\LeonardoBruni\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\L E O\\source\\repos\\Night\\src\\Services\\Products\\Products.Domain\\Products.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\LeonardoBruni\\source\\repos\\night-alternative\\Services\\Products\\Products.Domain\\Products.Domain.csproj",
       "projectName": "Products.Domain",
-      "projectPath": "C:\\Users\\L E O\\source\\repos\\Night\\src\\Services\\Products\\Products.Domain\\Products.Domain.csproj",
-      "packagesPath": "C:\\Users\\L E O\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\L E O\\source\\repos\\Night\\src\\Services\\Products\\Products.Domain\\obj\\",
+      "projectPath": "C:\\Users\\LeonardoBruni\\source\\repos\\night-alternative\\Services\\Products\\Products.Domain\\Products.Domain.csproj",
+      "packagesPath": "C:\\Users\\LeonardoBruni\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\LeonardoBruni\\source\\repos\\night-alternative\\Services\\Products\\Products.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\L E O\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LeonardoBruni\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -33,6 +33,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -64,15 +65,15 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.13, 6.0.13]"
+            "version": "[6.0.16, 6.0.16]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.13, 6.0.13]"
+            "version": "[6.0.16, 6.0.16]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.13, 6.0.13]"
+            "version": "[6.0.16, 6.0.16]"
           }
         ],
         "frameworkReferences": {
@@ -80,7 +81,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.105\\RuntimeIdentifierGraph.json"
       }
     }
   }

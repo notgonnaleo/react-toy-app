@@ -7,12 +7,20 @@ using System.Threading.Tasks;
 
 namespace Products.Domain.IService
 {
-    public interface IGeneric
+    public interface IGeneric<T>
     {
-        Task<List<T>> GetAll<T>(Expression<Func<T, bool>> predicate) where T : class;
-        Task<T> Get<T>(Expression<Func<T, bool>> predicate) where T : class;
-        Task<T> Add<T>(T model);
-        Task<bool> Update<T>(T model);
-        Task<bool> Delete<T>(T model);
+        // Default interface methods
+        Task<List<T>> GetAll();
+        Task<T> Get(int key1, int key2);
+        Task<T> Create(T entity);
+        Task<bool> Update(T entity);
+        Task<bool> Delete(int key1, int key2);
+
     }
+
+    // FYI: If we ever need to create a more specific signature or method to use 
+    // we are going to create it direct in the wanted service's interface instead 
+    // of creating it here. The reason for that is cause we don't want to make this a mess.
+    // only basic methods like simple GETs and POSTs methods are allowed here, if there's any 
+    // minimal bussiness logic on it we want that in a more specific layer, not here.
 }

@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Microsoft.Extensions.Logging;
 using Products.Domain.IService;
+using Products.Domain.Model.Product;
 using Products.Infrastructure.Context;
 using System;
 using System.Collections.Generic;
@@ -22,75 +23,90 @@ namespace Products.Infrastructure.Service
             _context = context;
             _logger = logger;
         }
-        public async Task<List<T>> GetAll<T>(Expression<Func<T, bool>> predicate) where T : class
+        public async Task<List<Product>> GetAll()
         {
-            List<T> response = null;
+            var response = new List<Product>();
             try
             {
-                response = _context.Set<T>().Where(predicate).ToList();
+                response = _context.Set<Product>().ToList();
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Route('${GetType().FullName + "." + MethodBase.GetCurrentMethod().DeclaringType.Name.Substring(1).Split('>')[0]}') LogError", ex);
                 throw ex;
             }
             return response;
         }
-        public async Task<T> Get<T>(Expression<Func<T, bool>> predicate) where T : class
+
+        public async Task<Product> Get(int TenantId, int ProductId)
         {
-            T response = null;
+            var response = new Product();
             try
             {
-                response = _context.Set<T>().Where(predicate).FirstOrDefault();
+                response = _context.Set<Product>().Where(x => x.ProductId == ProductId && x.TenantId == TenantId).FirstOrDefault();
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Route('${GetType().FullName + "." + MethodBase.GetCurrentMethod().DeclaringType.Name.Substring(1).Split('>')[0]}') LogError", ex);
                 throw ex;
             }
             return response;
         }
-        public async Task<T> Add<T>(T model)
+
+        public async Task<Product> Create(Product product)
         {
             try
             {
-                _context.Add(model);
-                _context.SaveChanges();
+                int maxValue = _context.Set<Product>().Where(x => x.TenantId == product.TenantId).Max(x => x.ProductId); // Max product id value in the DB
+                product.ProductId = maxValue++; // Auto-incremeting the product id
+
+                // Looking it now i think i should had listen to Samuel's advice, this is piece of code is a fucking mess
+                // Taking one GET request to do a POST is pathetic, I'm a damn clown for not going with Guid system.
+                // TODO: For god's sake change this for Guid in the future.
+
+                await _context.AddAsync(product);
+                await _context.SaveChangesAsync();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                _logger.LogError($"Route('${GetType().FullName + "." + MethodBase.GetCurrentMethod().DeclaringType.Name.Substring(1).Split('>')[0]}') LogError", ex);
                 throw ex;
             }
-            return model;
+            return product;
         }
-        public async Task<bool> Update<T>(T model)
+
+        public async Task<bool> Update(Product product)
         {
             try
             {
-                _context.Update(model);
-                _context.SaveChanges();
+                _context.Update(product);
+                var result = await _context.SaveChangesAsync(); // Return the amount of affect rows.
+                if(result > 0)
+                    return true;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Route('${GetType().FullName + "." + MethodBase.GetCurrentMethod().DeclaringType.Name.Substring(1).Split('>')[0]}') LogError", ex);
                 throw ex;
             }
-            return true;
+            return false;
         }
-        public async Task<bool> Delete<T>(T model)
+
+        public async Task<bool> Delete(int TenantId, int ProductId)
         {
             try
             {
-                _context.Remove(model);
-                _context.SaveChanges();
+                var response = _context.Set<Product>().Where(x => x.ProductId == ProductId && x.TenantId == TenantId).FirstOrDefault();
+                if(response != null)
+                {
+                    response.Active = false;
+                    _context.Update(response);
+                    var result = await _context.SaveChangesAsync(); // Return the amount of affect rows.
+                    if (result > 0)
+                        return true;
+                }
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Route('${GetType().FullName + "." + MethodBase.GetCurrentMethod().DeclaringType.Name.Substring(1).Split('>')[0]}') LogError", ex);
                 throw ex;
             }
-            return true;
+            return false;
         }
     }
 }
