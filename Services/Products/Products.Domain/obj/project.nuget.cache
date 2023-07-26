@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gkgG7mf49ZFUYdWmtLV/n7tPMh5es6XFwPEHDiosF8rD9GHD5v0d6CrumUrMI3sFmwiiCU93GPyMsdKC2oz+KQ==",
+  "dgSpecHash": "w1UfaKKHJiuJ3XF3qLCrBlHHbJnsnwoGCWBn94JDPsU1FyA2hZn4yGiVWDuD2roG0rPBBsLyChzv6OHN303mjw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LeonardoBruni\\source\\repos\\night-alternative\\Services\\Products\\Products.Domain\\Products.Domain.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\LeonardoBruni\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.16\\microsoft.windowsdesktop.app.ref.6.0.16.nupkg.sha512",
-    "C:\\Users\\LeonardoBruni\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.16\\microsoft.netcore.app.ref.6.0.16.nupkg.sha512",
-    "C:\\Users\\LeonardoBruni\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.16\\microsoft.aspnetcore.app.ref.6.0.16.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\L E O\\source\\repos\\Night\\src\\Services\\Products\\Products.Domain\\Products.Domain.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
