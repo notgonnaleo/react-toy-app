@@ -37,7 +37,7 @@ namespace Products.Infrastructure.Service
             return response;
         }
 
-        public async Task<Product> Get(int TenantId, int ProductId)
+        public async Task<Product> Get(Guid TenantId, Guid ProductId)
         {
             var response = new Product();
             try
@@ -55,13 +55,7 @@ namespace Products.Infrastructure.Service
         {
             try
             {
-                int maxValue = _context.Set<Product>().Where(x => x.TenantId == product.TenantId).Max(x => x.ProductId); // Max product id value in the DB
-                product.ProductId = maxValue++; // Auto-incremeting the product id
-
-                // Looking it now i think i should had listen to Samuel's advice, this is piece of code is a fucking mess
-                // Taking one GET request to do a POST is pathetic, I'm a damn clown for not going with Guid system.
-                // TODO: For god's sake change this for Guid in the future.
-
+                product.ProductId = product.GenerateGuid();
                 await _context.AddAsync(product);
                 await _context.SaveChangesAsync();
             }
@@ -88,7 +82,7 @@ namespace Products.Infrastructure.Service
             return false;
         }
 
-        public async Task<bool> Delete(int TenantId, int ProductId)
+        public async Task<bool> Delete(Guid TenantId, Guid ProductId)
         {
             try
             {

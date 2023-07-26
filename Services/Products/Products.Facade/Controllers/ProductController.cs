@@ -33,7 +33,7 @@ namespace Products.Facade.Controllers
 
         [HttpGet]
         [Route("GetProduct")]
-        public IActionResult GetProduct(int TenantId, int ProductId)
+        public IActionResult GetProduct(Guid TenantId, Guid ProductId)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace Products.Facade.Controllers
 
         [HttpDelete]
         [Route("CreateProduct")]
-        public async Task<IActionResult> DeleteProduct(int TenantId, int ProductId)
+        public async Task<IActionResult> DeleteProduct(Guid TenantId, Guid ProductId)
         {
             try
             {

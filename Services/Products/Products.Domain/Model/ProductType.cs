@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Products.Domain.Model.Core;
+using System;
 using System.Collections.Generic;
 
 namespace Products.Domain.Model.ProductType;
 
-public partial class ProductType
+public partial class ProductType : BaseModel
 {
-    public int TenantId { get; set; }
+    public Guid TenantId { get; set; }
 
-    public int ProductTypeId { get; set; }
+    public Guid ProductTypeId { get; set; }
 
     public string? Name { get; set; }
 

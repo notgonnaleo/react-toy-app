@@ -1,4 +1,5 @@
-﻿using Products.Domain.Model.Product;
+﻿using Products.Domain.IService.Core;
+using Products.Domain.Model.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;

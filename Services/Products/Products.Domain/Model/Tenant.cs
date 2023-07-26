@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Products.Domain.Model.Core;
+using System;
 using System.Collections.Generic;
 
 namespace Products.Domain.Model.Tenant;
 
-public partial class Tenant
+public partial class Tenant : BaseModel
 {
-    public int TenantId { get; set; }
+    public Guid TenantId { get; set; }
 
     public string? Name { get; set; }
 

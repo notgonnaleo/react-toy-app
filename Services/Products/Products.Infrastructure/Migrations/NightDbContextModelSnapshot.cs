@@ -24,11 +24,11 @@ namespace Products.Infrastructure.Migrations
 
             modelBuilder.Entity("Products.Domain.Model.Person.Person", b =>
                 {
-                    b.Property<int>("TenantId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PersonId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool?>("Active")
                         .HasColumnType("bit");
@@ -59,11 +59,11 @@ namespace Products.Infrastructure.Migrations
 
             modelBuilder.Entity("Products.Domain.Model.Product.Product", b =>
                 {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("TenantId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool?>("Active")
                         .HasColumnType("bit");
@@ -96,11 +96,11 @@ namespace Products.Infrastructure.Migrations
 
             modelBuilder.Entity("Products.Domain.Model.ProductType.ProductType", b =>
                 {
-                    b.Property<int>("ProductTypeId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ProductTypeId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("TenantId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool?>("Active")
                         .HasColumnType("bit");
@@ -127,8 +127,8 @@ namespace Products.Infrastructure.Migrations
 
             modelBuilder.Entity("Products.Domain.Model.Tenant.Tenant", b =>
                 {
-                    b.Property<int>("TenantId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool?>("Active")
                         .HasColumnType("bit");

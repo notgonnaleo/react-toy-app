@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Products.Domain.Model.Core;
+using System;
 using System.Collections.Generic;
 
 namespace Products.Domain.Model.Person;
 
-public partial class Person
+public partial class Person : BaseModel
 {
-    public int TenantId { get; set; }
+    public Guid TenantId { get; set; }
 
-    public int PersonId { get; set; }
+    public Guid PersonId { get; set; }
 
     public string? Name { get; set; }
 
